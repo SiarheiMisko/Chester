@@ -42,7 +42,7 @@ struct Query {
   }
   
   func validate() throws {
-    if fields.isEmpty && subQueries.isEmpty {
+    if fields.isEmpty && subQueries.isEmpty && literalSubQueries.isEmpty {
       throw QueryError.missingFields
     }
   }

@@ -33,7 +33,9 @@ public struct GraphQLBuilder {
       try! queryBuilder.with(rawArguments: arguments)
     }
     if !subQueries.isEmpty {
-      try! queryBuilder.with(literalSubQuery: subQueries[0].string)
+      for subQuery in subQueries {
+        try! queryBuilder.with(literalSubQuery: subQuery.string)
+      }
     }
     if !onCollections.isEmpty {
       queryBuilder.on(collections: onCollections.flatMap { $0.components })
